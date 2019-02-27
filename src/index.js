@@ -141,23 +141,12 @@ ReactDOM.render(
 function Comment(props) {
   return (
     <div className="Comment">
-
-      <div className="UserInfo">
-        <img className="Avatar"
-          src={props.author.avatarURL}
-          alt={props.author.name}
-          />
-        <h1 className="UserInfo-name">
-          {props.author.name}
-        </h1>
-      </div>
-
+      <UserInfo user={props.author} />
       <div className="Comment-UserEmail">
         <h2>
           {props.email}
         </h2>
       </div>
-
       <div className="Comment-UserNickname">
         {props.nickname}
       </div>
@@ -166,7 +155,22 @@ function Comment(props) {
 }
 
 function Avatar(props) {
-  
+  return (
+    <img className="Avatar"
+    src={props.user.avatarURL}
+    alt={props.user.name} />
+  );
+}
+
+function UserInfo(props) {
+  return (
+    <div className="UserInfo">
+      <Avatar user={props.user} />
+      <h1 className="UserInfo-name">
+        {props.user.name}
+      </h1>
+    </div>
+  );
 }
 
 
